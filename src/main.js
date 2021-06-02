@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import uView from "uview-ui";
 
 Vue.config.productionTip = false
 
@@ -9,3 +10,5 @@ const app = new Vue({
   ...App
 })
 app.$mount()
+
+Vue.use(uView);
