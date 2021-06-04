@@ -34,7 +34,9 @@
 			}
 		},
 		onLoad() {
-
+            // this.request({
+			// 	url:"/api/services/app/Honor/GetAll"
+			// })
 		},
 		methods: {
           nextpage() {
