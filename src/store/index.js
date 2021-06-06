@@ -3,16 +3,11 @@ import  Vuex from "vuex"
 Vue.use(Vuex)
 export default new Vuex.Store({
     state: { 
-        number: 0,
-        theme: {},
         companyInfo: {},
         culture: '',
         tenantId: ''
     },
     mutations: {
-        SETENV(state, val) {
-            state.theme = val
-        },
         setCompanyInfo(state, val) {
             state.companyInfo = val
         },
@@ -30,5 +25,8 @@ export default new Vuex.Store({
         getTenantId(state) {
             return state.tenantId
         }
+    },
+    actions: {
+        
     }
 })
