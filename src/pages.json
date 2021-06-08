@@ -2,24 +2,44 @@
 	"easycom": {
         "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
 	},
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+	"pages": [
 		{
 			"path": "pages/index/index",
+			"name":"index",
+            "meta":{
+                "title": "欢迎页"
+            },
 			"style": {
 				"navigationBarTitleText": "需动态获取"
 			}
 		},
 		{
-			"path": "pages/home/home"
+			"path": "pages/home/home",
+			"name":"home",
+            "meta":{
+                "title": "首页"
+            }
 		},
 		{
-			"path": "pages/aboutus/aboutus"
+			"path": "pages/aboutus/aboutus",
+			"name":"aboutus",
+            "meta":{
+                "title": "关于我们"
+            }
 		},
 		{
-			"path": "pages/honor/honor"
+			"path": "pages/honor/honor",
+			"name":"honor",
+            "meta":{
+                "title": "荣誉"
+            }
 		},
 		{
-			"path": "pages/newscenter/newscenter"
+			"path": "pages/newscenter/newscenter",
+			"name":"newscenter",
+            "meta":{
+                "title": "新闻中心"
+            }
 		}
 	],
 	"globalStyle": {
