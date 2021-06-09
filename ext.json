@@ -1,0 +1,14 @@
+{
+    "extEnable": true,
+    "extAppid": "touristappid",
+    "directCommit": false,
+    "ext": {
+      "appid": "touristappid"
+    },
+    "window":{
+      "backgroundTextStyle":"light",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "Demo",
+      "navigationBarTextStyle":"black"
+    }
+}

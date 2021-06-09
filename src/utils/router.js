@@ -1,4 +1,4 @@
-import {createRouter} from 'uni-simple-router';
+import createRouter from 'uni-simple-router';
 
 const router = createRouter({
 	platform: process.env.VUE_APP_PLATFORM,  

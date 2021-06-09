@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 const $axios = axios.create({
-    baseUrl: process.env.VUE_APP_URL,
+    baseUrl: 'https://cms.ednet.cn',
     withCredentials: true
 })
 
 $axios.interceptors.request.use(
     config => {
-        config.headers.common[store.state.headerName] = store.getters['index/getCulture']
-        config.headers.common[store.state.multiTenancyHeader] = store.getters['index/getTenantId']
+        config.headers.common[$store.state.headerName] = $store.getters['index/getCulture']
+        config.headers.common[$store.state] = $store.getters['index/getTenantId']
         console.log('请求拦截成功')
         return config
     }, error => Promise.reject(error)
