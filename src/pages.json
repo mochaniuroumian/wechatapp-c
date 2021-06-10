@@ -20,27 +20,6 @@
                 "title": "首页"
             }
 		}
-		// {
-		// 	"path": "pages/aboutus/aboutus",
-		// 	"name":"aboutus",
-        //     "meta":{
-        //         "title": "关于我们"
-        //     }
-		// },
-		// {
-		// 	"path": "pages/honor/honor",
-		// 	"name":"honor",
-        //     "meta":{
-        //         "title": "荣誉"
-        //     }
-		// },
-		// {
-		// 	"path": "pages/newscenter/newscenter",
-		// 	"name":"newscenter",
-        //     "meta":{
-        //         "title": "新闻中心"
-        //     }
-		// }
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

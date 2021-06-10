@@ -1,9 +1,14 @@
 {
-    "extEnable": true,
-    "extAppid": "touristappid",
+    "extEnable": false,
+    "extAppid": "wx88fbfd6c699ad12f",
     "directCommit": false,
     "ext": {
-      "appid": "touristappid"
+      "appid": "wx88fbfd6c699ad12f"
+    },
+    "extPages": {
+      "pages/index/index": {
+      "navigationBarTitleText": "logs"
+      }
     },
     "window":{
       "backgroundTextStyle":"light",

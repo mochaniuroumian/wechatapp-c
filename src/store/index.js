@@ -1,5 +1,6 @@
 import Vue from "vue"
 import  Vuex from "vuex"
+import $axios from "../utils/axios"
 Vue.use(Vuex)
 export default new Vuex.Store({
     state: { 
@@ -10,7 +11,7 @@ export default new Vuex.Store({
         breadCrumbItems: [],
         partners: [],
         homePage: {},
-        culture: '',
+        culture: 'zh-CN',
         tenantId: '',
         headerName: '.AspNetCore.Culture',
         multiTenancyHeader: 'Abp.TenantId'
@@ -119,36 +120,36 @@ export default new Vuex.Store({
             }
         },
         async getNavbars(context) {
-            const res = await this.$axios.get('/api/services/app/Navbar/GetAll')
+            const res = await $axios.get('/api/services/app/Navbar/GetAll')
             if (res.data.success) {
               context.state.navbars = res.data.result[0].children
             }
           },
           async getCompanyInfo(context) {
-            const res = await this.$axios.get('/api/services/app/CompanyInfo/GetOrCreate')
+            const res = await $axios.get('/api/services/app/CompanyInfo/GetOrCreate')
             if (res.data.success) {
               context.commit('setCompanyInfo', res.data.result)
             }
           },
           async getOrganization(context, params) {
-            const res = await this.$axios.get('/api/services/app/Organization/GetAll', params)
+            const res = await $axios.get('/api/services/app/Organization/GetAll', params)
             if (res.data.success) {
               context.state.partners = res.data.result
               return res.data.result
             }
           },
           async getPartner(context, params) {
-            const res = await this.$axios.get('/api/services/app/Partner/GetAll', params)
+            const res = await $axios.get('/api/services/app/Partner/GetAll', params)
             if (res.data.success) {
               context.state.partners = res.data.result
               return res.data.result
             }
           },
           async getHomePage(context) {
-            const that = this
-            const res = await this.$axios.get('/api/services/app/HomePage/GetOrCreate')
+            const res = await $axios.get('/api/services/app/HomePage/GetOrCreate')
+            // console.log(res)
             if (res.data.success) context.state.homePage = res.data.result
-        
+            // console.log(res.data.result)
             for (let element of context.state.homePage.groups) {
               let params = {
                 params: {
@@ -158,51 +159,51 @@ export default new Vuex.Store({
                   Sorting: 'IsTop DESC, Number DESC'
                 }
               }
-              const _items = await that.$axios.get('/api/services/app/Catalog/GetAll', params)
+              const _items = await $axios.get('/api/services/app/Catalog/GetAll', params)
               if (_items.data.success) element.items = _items.data.result.items
               params = {
                 params: {
                   Id: element.catalogGroupId
                 }
               }
-              const _children = await that.$axios.get('/api/services/app/CatalogGroup/GetAll', params)
+              const _children = await $axios.get('/api/services/app/CatalogGroup/GetAll', params)
               if (_children.data.success) element.children = _children.data.result
             }
           },
           async getAnounces(context, params) {
-            const res = await this.$axios.get('/api/services/app/Announce/GetAll', params)
+            const res = await $axios.get('/api/services/app/Announce/GetAll', params)
             if (res.data.success) return res.data.result
           },
           async getAnounce(context, params) {
-            const res = await this.$axios.get('/api/services/app/Announce/Get', params)
+            const res = await $axios.get('/api/services/app/Announce/Get', params)
             if (res.data.success) return res.data.result
           },
           async getPage(context, params) {
-            const res = await this.$axios.get('/api/services/app/Page/Get', params)
+            const res = await $axios.get('/api/services/app/Page/Get', params)
             if (res.data.success) return res.data.result
           },
           async getCatalogGroupList(context, params) {
-            const res = await this.$axios.get('/api/services/app/CatalogGroup/GetAll', params)
+            const res = await $axios.get('/api/services/app/CatalogGroup/GetAll', params)
             if (res.data.success) return res.data.result
           },
           async getCatalogGroup(context, params) {
-            const res = await this.$axios.get('/api/services/app/CatalogGroup/Get', params)
+            const res = await $axios.get('/api/services/app/CatalogGroup/Get', params)
             if (res.data.success) return res.data.result
           },
           async getCatalogList(context, params) {
-            const res = await this.$axios.get('/api/services/app/Catalog/GetAll', params)
+            const res = await $axios.get('/api/services/app/Catalog/GetAll', params)
             if (res.data.success) return res.data.result
           },
           async getCatalog(context, params) {
-            const res = await this.$axios.get('/api/services/app/Catalog/Get', params)
+            const res = await $axios.get('/api/services/app/Catalog/Get', params)
             if (res.data.success) return res.data.result
           },
           async getHonorList(context, params) {
-            const res = await this.$axios.get('/api/services/app/Honor/GetAll', params)
+            const res = await $axios.get('/api/services/app/Honor/GetAll', params)
             if (res.data.success) return res.data.result
           },
           async getHonor(context, params) {
-            const res = await this.$axios.get('/api/services/app/Honor/Get', params)
+            const res = await $axios.get('/api/services/app/Honor/Get', params)
             if (res.data.success) return res.data.result
           }
     }

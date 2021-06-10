@@ -13,16 +13,22 @@
 			if (uni.getExtConfig) {
               uni.getExtConfig({
                 success(res) {
-                  console.log(res)
-				  that.extConfig = res.extConfig
-				  that.$store.commit('index/setTenantId', that.extConfig.appid)
+					if(that.extConfig.appid){
+                      console.log(res)
+				      that.extConfig = res.extConfig
+				    } else {
+					  that.extConfig.appid = process.env.VUE_APP_APPID
+				      that.$store.commit('setTenantId', that.extConfig.appid)
+			          that.$store.dispatch('getHomePage')
+					}
                 },fail(err) {
-                  console.error("获取失败" + err)
+                  console.error(err)
 				}
               })
             } else {
-				that.extConfig = process.env.VUE_APP_APPID
-				that.$store.commit('index/setTenantId', that.extConfig.appid)
+				that.extConfig.appid = process.env.VUE_APP_APPID
+				that.$store.commit('setTenantId', that.extConfig.appid)
+			    that.$store.dispatch('getHomePage')
 			}
 		},
 		onHide: function() {

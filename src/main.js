@@ -6,8 +6,8 @@ import axios from "./utils/axios"
 // import router from './utils/router'
 
 Vue.config.productionTip = false
-Vue.prototype.$axios = axios
 Vue.prototype.$store = store
+Vue.prototype.$axios = axios
 // Vue.use(router)
 
 App.mpType = 'app'

@@ -1,20 +1,21 @@
 import axios from 'axios'
-
-const $axios = axios.create({
-    baseUrl: 'https://cms.ednet.cn',
+import store from '../store/index'
+let baseURL = process.env.VUE_APP_URL_AXIOS
+const service = axios.create({
+    baseURL,
+    timeout:30000,
     withCredentials: true
 })
 
-$axios.interceptors.request.use(
+service.interceptors.request.use(
     config => {
-        config.headers.common[$store.state.headerName] = $store.getters['index/getCulture']
-        config.headers.common[$store.state] = $store.getters['index/getTenantId']
-        console.log('请求拦截成功')
+        config.headers.common[store.state.headerName] = store.getters['getCulture']
+        config.headers.common[store.state.multiTenancyHeader] = store.getters['getTenantId']
         return config
     }, error => Promise.reject(error)
 )
 
-$axios.interceptors.response.use(
+service.interceptors.response.use(
     response => {
         return response
     },error => {
@@ -36,3 +37,31 @@ $axios.interceptors.response.use(
         return Promise.reject(error)
     }
 )
+axios.defaults.adapter = function(config) { //自己定义个适配器，用来适配uniapp的语法
+    return new Promise((resolve, reject) => {
+        var settle = require('axios/lib/core/settle');
+        var buildURL = require('axios/lib/helpers/buildURL');
+        uni.request({
+            method: config.method.toUpperCase(),
+            url: config.baseURL + buildURL(config.url, config.params, config.paramsSerializer),
+            header: config.headers,
+            data: config.data,
+            dataType: config.dataType,
+            responseType: config.responseType,
+            sslVerify: config.sslVerify,
+            complete: function complete(response) {
+                // console.log(response)
+                response = {
+                    data: response.data,
+                    status: response.statusCode,
+                    errMsg: response.errMsg,
+                    header: response.header,
+                    config: config
+                };
+
+                settle(resolve, reject, response);
+            }
+        })
+    })
+}
+export default service
