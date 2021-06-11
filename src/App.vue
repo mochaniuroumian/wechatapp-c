@@ -1,40 +1,64 @@
 <script>
+import {mapState,mapMutations} from 'vuex'
 	export default {
 		data () {
             return {
 				extConfig: {}
 			}
 		},
-		onLaunch: function() {
+		onLaunch() {
 			console.log('App Launch')
 		},
-		onShow: function() {
+		async onShow() {
 			let that = this
-			if (uni.getExtConfig) {
-              uni.getExtConfig({
-                success(res) {
-					if(that.extConfig.appid){
-                      console.log(res)
-				      that.extConfig = res.extConfig
-				    } else {
-					  that.extConfig.appid = process.env.VUE_APP_APPID
-				      that.$store.commit('setTenantId', that.extConfig.appid)
-			          that.$store.dispatch('getHomePage')
-					}
-                },fail(err) {
-                  console.error(err)
-				}
-              })
-            } else {
-				that.extConfig.appid = process.env.VUE_APP_APPID
-				that.$store.commit('setTenantId', that.extConfig.appid)
-			    that.$store.dispatch('getHomePage')
-			}
+            await that.getAppid()
+			that.$store.commit('setTenantId', that.extConfig.appid)
+			await that.$store.dispatch('getAbp')
+			that.$store.dispatch('getHomePage')
+			await that.getLanguage()
 		},
-		onHide: function() {
-			console.log('App Hide')
-		}
-	}
+		computed: {
+          ...mapState({
+            abp: state => state.abp,
+            companyInfo: state => state.app.companyInfo
+          })
+        },
+		methods: {
+			getAppid() {
+				let that = this
+				return new Promise((resolve, reject) => {
+				  uni.getExtConfig({
+                    success(res) {
+					  if(that.extConfig.appid){
+				        that.extConfig = res.extConfig
+				      } else {
+					    that.extConfig.appid = process.env.VUE_APP_APPID
+					  }
+					  resolve('suc')
+                    },fail(err) {
+                      console.error(err)
+				      reject('msg')
+				    }
+                  })
+			    })
+			},
+			getLanguage() {
+				let abp = this.$store.state.abp
+				let temp = abp.setting.values['Abp.Localization.LanguageDefineByBrower']
+                let isLanguageDefineByBrower = temp.toLowerCase() === 'true'
+				let defaultLang
+                if (!isLanguageDefineByBrower) {
+                  let langs = abp.localization.languages
+                  defaultLang = 'zh-CN'
+                  langs.forEach(x => {
+                    if (x.isDefault) defaultLang = x
+                  })
+				  that.$store.dispatch('setCookie', defaultLang)
+                  that.$store.dispatch('getCompanyInfo')
+			    }
+		    }
+	    }
+    }
 </script>
 
 <style lang="scss">

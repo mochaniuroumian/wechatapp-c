@@ -16,5 +16,4 @@ const app = new Vue({
   ...App
 })
 app.$mount()
-
 Vue.use(uView)

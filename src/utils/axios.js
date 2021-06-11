@@ -37,7 +37,7 @@ service.interceptors.response.use(
         return Promise.reject(error)
     }
 )
-axios.defaults.adapter = function(config) { //自己定义个适配器，用来适配uniapp的语法
+axios.defaults.adapter = function(config) { 
     return new Promise((resolve, reject) => {
         var settle = require('axios/lib/core/settle');
         var buildURL = require('axios/lib/helpers/buildURL');
@@ -50,7 +50,6 @@ axios.defaults.adapter = function(config) { //自己定义个适配器，用来�
             responseType: config.responseType,
             sslVerify: config.sslVerify,
             complete: function complete(response) {
-                // console.log(response)
                 response = {
                     data: response.data,
                     status: response.statusCode,

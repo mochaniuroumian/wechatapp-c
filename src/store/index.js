@@ -4,6 +4,7 @@ import $axios from "../utils/axios"
 Vue.use(Vuex)
 export default new Vuex.Store({
     state: { 
+        abp: {},
         companyInfo: {},
         navbars: [],
         currentPath: {},
@@ -119,6 +120,13 @@ export default new Vuex.Store({
               })
             }
         },
+        async getAbp(context) {
+          await $axios.get('/AbpUserConfiguration/GetAll').then(data => {
+            const json = data.data.result
+            json.localization.defaultSourceName = 'Ednet'
+            context.state.abp = json
+          })
+        },
         async getNavbars(context) {
             const res = await $axios.get('/api/services/app/Navbar/GetAll')
             if (res.data.success) {
@@ -147,9 +155,7 @@ export default new Vuex.Store({
           },
           async getHomePage(context) {
             const res = await $axios.get('/api/services/app/HomePage/GetOrCreate')
-            // console.log(res)
             if (res.data.success) context.state.homePage = res.data.result
-            // console.log(res.data.result)
             for (let element of context.state.homePage.groups) {
               let params = {
                 params: {
