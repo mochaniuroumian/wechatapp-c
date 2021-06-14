@@ -7,6 +7,7 @@ export default new Vuex.Store({
         abp: {},
         companyInfo: {},
         navbars: [],
+        tabbar: [],
         currentPath: {},
         currentPathParent: {},
         breadCrumbItems: [],
@@ -129,8 +130,26 @@ export default new Vuex.Store({
         },
         async getNavbars(context) {
             const res = await $axios.get('/api/services/app/Navbar/GetAll')
-            if (res.data.success) {
-              context.state.navbars = res.data.result[0].children
+            if (res.data.success) context.state.navbars = res.data.result[0].children
+            for (let element of context.state.navbars) {
+              let tab = {}
+              tab.text = element.displayName
+              // tab.pagePath = "pages" + element.url
+              tab.pagePath = "pages/zh-CN/Home/home"
+              tab.iconPath = "home"
+              tab.selectedIconPath = "home-fill"
+              if(element.catalogGroup !== null){
+                if(element.catalogGroup.cover !== ''){
+                  tab.iconPath = element.catalogGroup.cover
+                  tab.selectedIconPath = element.catalogGroup.cover
+                }
+              }
+              context.state.tabbar.push(tab)
+              // if(element.catalogGroup.cover = ''){
+              //   context.state.tabbar.selectedIconPath = "home-fill"
+              // }else {
+              //   context.state.tabbar.selectedIconPath = element.catalogGroup.cover
+              // }
             }
           },
           async getCompanyInfo(context) {

@@ -1,0 +1,76 @@
+.container {
+    &.home {
+        padding: 4% 4% 0 4%;
+        background-color: $uni-bg-color;
+        .hello {
+            width: 100%;
+            height: 140rpx;
+            display: flex;
+            .user-img {
+                border-radius: $uni-border-radius-circle;
+                height: 140rpx;
+                width: 140rpx;
+                overflow: hidden;
+                border: 2px solid $uni-bg-color-blue;
+            }
+            .user-info {
+                width: calc(100% - 140rpx);
+                line-height: 70rpx;
+                padding-left: 20rpx;
+                .user-name {
+                    font-size: $uni-font-size-lger;
+                }
+                .time {
+                    color: $uni-text-color-placeholder;
+                }
+            }
+        }
+        u-search {
+            width: 100%;
+        }
+        .product {
+            width: 100%;
+            display: flex;
+            .product-block {
+                width: 30%;
+                height: 220rpx;
+                box-shadow: 0px 0px 3px 3px $uni-bg-color-shadow;
+                border-radius:$uni-border-radius-sm;
+                position: relative;
+                &:nth-child(2n) {
+                    margin: 0 5%;
+                }
+                .product-name {
+                    width: 100%;
+                    height: 50rpx;
+                    background-color: $uni-text-color-placeholder-href;
+                    color: $uni-text-color-inverse;
+                    text-align: right;
+                    padding: 0 8rpx;
+                    position: absolute;
+                    bottom: 8rpx;
+                }
+            }
+
+        }
+        .news-block {
+            width: 100%;
+            .news-title {
+                font-size: $uni-font-size-lger;
+                margin: 40rpx 0;
+            }
+            .news-body {
+                .news-body-font {
+                    padding: 20rpx;
+                }
+                .news-body-time {
+                    color: $uni-text-color-placeholder;
+                }
+                .news-body-des {
+                    font-size: $uni-font-size-sm;
+                    padding-top: 4rpx;
+                }
+            }
+        }
+    }
+}

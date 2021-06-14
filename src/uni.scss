@@ -25,6 +25,7 @@ $uni-text-color:#333;//基本色
 $uni-text-color-inverse:#fff;//反色
 $uni-text-color-grey:#999;//辅助灰色，如加载更多的提示信息
 $uni-text-color-placeholder: #808080;
+$uni-text-color-placeholder-href: #8080808e;
 $uni-text-color-disable:#c0c0c0;
 
 /* 背景颜色 */
@@ -34,9 +35,8 @@ $uni-bg-color-grey:#f8f8f8;
 $uni-bg-color-grey-href:#c7c7c756;
 $uni-bg-color-hover:#f1f1f1;//点击状态颜色
 $uni-bg-color-mask:rgba(50, 50, 50, 0.4);//遮罩颜色
-$uni-bg-color-green:#a9d682;
-$uni-bg-color-purple:#af7ab5;
-$uni-bg-color-purpledeep:#8080ff;
+$uni-bg-color-blue:#3299bd;
+$uni-bg-color-shadow:#8888883f;
 
 /* 边框颜色 */
 $uni-border-color:#c8c7cc;
@@ -87,3 +87,5 @@ $uni-font-size-paragraph:30rpx;
 
 @import 'uview-ui/theme.scss';
 @import '/pages/css/index.scss';
+@import '/pages/css/home.scss';
+@import '/pages/css/about.scss';

@@ -20,7 +20,7 @@ import {mapState,mapMutations} from 'vuex'
 		computed: {
           ...mapState({
             abp: state => state.abp,
-            companyInfo: state => state.app.companyInfo
+            companyInfo: state => state.companyInfo
           })
         },
 		methods: {

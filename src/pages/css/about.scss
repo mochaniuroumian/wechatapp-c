@@ -1,0 +1,22 @@
+.container {
+    &.about {
+        background-color: $uni-bg-color;
+    }
+    .about-title {
+        width: 100%;
+        margin: 40rpx 0;
+        text-align: center;
+    }
+    .about-content {
+        width: 100%;
+        margin-top: 40rpx;
+        padding: 0 4%;
+        word-break: break-all;
+        overflow: hidden;
+        &.limit-width {
+          img {
+            max-width: 100% !important;
+          }
+        }
+    }
+}

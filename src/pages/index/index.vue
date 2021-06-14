@@ -1,10 +1,10 @@
 <template>
-	<view class="container">
-		<view class="index-logo"><image mode="aspectFit" :src="imageUrllogo"></image></view>
-		<view class="colorwhite bigfont ede">e德互联</view>
+	<view class="container index">
+		<view class="index-logo"><image mode="aspectFit" :src="companyInfo.logo"></image></view>
+		<view class="colorwhite bigfont ede">{{ companyInfo.appName }}</view>
 		<view class="colorwhite titleright">
 			<view class="connull"></view>
-			<text>云端共享.服务升级</text>
+			<text>{{ companyInfo.logoText }}</text>
 		</view>
 		<view class="nextPage">
 			<u-icon class="more-dot-fill" name="more-dot-fill" color="#fff" size="70"></u-icon>
@@ -27,30 +27,29 @@
 </template>
 
 <script>
+import {mapState,mapMutations} from 'vuex'
 	export default {
 		data() {
 			return {
-				title: 'Hello'
 			}
 		},
-		onLoad() {
+		async onLoad() {
+		  let that = this
+          that.$store.dispatch('setCookie', 'zh-CN')
+          await that.$store.dispatch('getCompanyInfo')
+		  await that.$store.dispatch('getNavbars')
+		},
+		computed: {
+          ...mapState({
+			companyInfo: state => state.companyInfo
+          }),
 		},
 		methods: {
           nextpage() {
-			uni.getUserInfo({
-              success: res => {
-                this.username = res.userInfo.nickName
-				this.userimg = res.userInfo.avatarUrl
-				uni.redirectTo({
-					url: '/pages/product/product?name=' + this.username + '&img=' + this.userimg,
+			uni.redirectTo({
+					url: '/pages/zh-CN/Organization/organization',
 				})
-              },
-			  fail() {
-				this.username = '未登录用户'
-				this.userimg = app.globalData.imageUrl + 'logo.png'
-			  }
-			});
-		  }
+          }
 		}
 	}
 </script>

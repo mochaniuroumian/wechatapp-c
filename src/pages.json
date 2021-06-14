@@ -8,17 +8,37 @@
 			"name":"index",
             "meta":{
                 "title": "欢迎页"
-            },
-			"style": {
-				"navigationBarTitleText": "需动态获取"
-			}
+            }
 		},
 		{
-			"path": "pages/home/home",
+			"path": "pages/zh-CN/Home/home",
 			"name":"home",
             "meta":{
                 "title": "首页"
-            }
+            },
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/zh-CN/About/about",
+			"name":"about",
+            "meta":{
+                "title": "关于我们"
+            },
+			"style": {
+				"navigationBarTitleText": "关于我们"
+			}
+		},
+		{
+			"path": "pages/zh-CN/Organization/organization",
+			"name":"organization",
+            "meta":{
+                "title": "组织架构"
+            },
+			"style": {
+				"navigationBarTitleText": "组织架构"
+			}
 		}
 	],
 	"globalStyle": {
