@@ -2,6 +2,9 @@
 <view>
   <view class="container about">
     <view class="about-title bigfont">{{ companyInfo.appName }}</view>
+    <view class="swiper-ab">
+      <u-swiper :list="swiper" mode="none" height="350"></u-swiper>
+    </view>
     <view class="about-content limit-width">
       <u-parse :lazy-load="true" :html="companyInfo.content"></u-parse>
     </view>
@@ -28,7 +31,3 @@ export default {
 	  },
 }
 </script>
-
-<style>
-
-</style>

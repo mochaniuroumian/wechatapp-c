@@ -1,0 +1,22 @@
+.container {
+    &.honor {
+        padding: 4% 4% 0 4%;
+        background-color: #eee;
+        .honor-list {
+            width: 100%;
+            height: 400rpx;
+            padding: 4% 12%;
+            margin-bottom: 4%;
+            background-color: #fff;
+            .honor-title {
+                text-align: center;
+                font-size: $uni-font-size-lg;
+                margin: 1% 0;
+            }
+            .honor-date {
+                text-align: center;
+                color: $uni-text-color-placeholder;
+            }
+        }
+    }
+}

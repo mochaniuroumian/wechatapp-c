@@ -39,6 +39,26 @@
 			"style": {
 				"navigationBarTitleText": "组织架构"
 			}
+		},
+		{
+			"path": "pages/zh-CN/Honor/honor",
+			"name":"honor",
+            "meta":{
+                "title": "荣誉"
+            },
+			"style": {
+				"navigationBarTitleText": "荣誉"
+			}
+		},
+		{
+			"path": "pages/zh-CN/Partner/partner",
+			"name":"partner",
+            "meta":{
+                "title": "合作伙伴"
+            },
+			"style": {
+				"navigationBarTitleText": "合作伙伴"
+			}
 		}
 	],
 	"globalStyle": {

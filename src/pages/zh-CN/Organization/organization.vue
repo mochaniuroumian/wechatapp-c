@@ -2,7 +2,7 @@
   <view>
       <view class="container organization">
           <view class="swiper-or">
-            <u-swiper :list="swiper"></u-swiper>
+            <u-swiper :list="swiper" mode="none" height="350"></u-swiper>
           </view>
           <view class="org-card">
             <ly-tree :tree-data="items"  :ready="true" :props="propsitem"
@@ -23,12 +23,22 @@ export default {
     data() {
 	  	return {
 		  	items: '',
-          propsitem: function() {
-            return {
-              label: 'displayName', // 指把数据中的‘personName’当做label也就是节点名称
-              children: 'children' // 指把数据中的‘childs’当做children当做子节点数据
-            }
-          },
+        propsitem: function() {
+          return {
+            label: 'displayName', // 指把数据中的‘personName’当做label也就是节点名称
+            children: 'children' // 指把数据中的‘childs’当做children当做子节点数据
+          }
+        },
+        swiper: [{
+						image: 'https://cdn.uviewui.com/uview/swiper/1.jpg'
+					},
+					{
+						image: 'https://cdn.uviewui.com/uview/swiper/2.jpg'
+					},
+					{
+						image: 'https://cdn.uviewui.com/uview/swiper/3.jpg'
+					}
+				],
 		  }
 	  },
     components: { 
@@ -37,13 +47,12 @@ export default {
     computed: {
         ...mapState({
           tabbar: state => state.tabbar,
-          swiper: state => state.tabbar.bannerImgs,
+          // swiper: state => state.tabbar.bannerImgs,
         }),
 	},
     async onLoad() {
 		const json = await this.$store.dispatch('getOrganization')
         this.items = json
-        debugger
         // let curRoute  = this.$mp.page.route;
 	},
   methods: {
@@ -56,7 +65,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

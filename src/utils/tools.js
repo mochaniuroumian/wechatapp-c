@@ -17,6 +17,25 @@ const date = function(dateObject) {
     }
     return null
 }
+
+const dateOnly = function(dateObject) {
+  if (dateObject !== null && dateObject.length > 0) {
+    if (!dateObject.includes('T')) dateObject = dateObject.replace(/-/g, '/')
+    const d = new Date(dateObject)
+    let day = d.getDate()
+    let month = d.getMonth() + 1
+    const year = d.getFullYear()
+    if (day < 10) {
+      day = '0' + day
+    }
+    if (month < 10) {
+      month = '0' + month
+    }
+    const date = year + '-' + month
+    return date
+  }
+  return null
+}
 //过滤html
 const _filter = function(str) {
     if (str !== null && str !== '' && str !== undefined) {
@@ -56,5 +75,6 @@ const cutString = function(str, len) {
 export default {
     date,
     _filter,
-    cutString
+    cutString,
+    dateOnly
 }

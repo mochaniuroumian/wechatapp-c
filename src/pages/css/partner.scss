@@ -1,0 +1,24 @@
+.container {
+    &.partner {
+        .swiper-pa {
+            width: 100%;
+        }
+        .partner-block {
+            width: 100%;
+            display: flex;
+            padding: 4% 1%;
+          .partner-list {
+            width: 50%;
+            height: 400rpx;
+            padding: 4%;
+            margin-bottom: 4%;
+            background-color: #fff;
+            .partner-title {
+                text-align: center;
+                font-size: $uni-font-size-lg;
+                margin: 1% 0;
+            }
+          }
+        }
+    }
+}
