@@ -36,7 +36,7 @@
       </view>
       
   </view>
-  <u-tabbar :list="tabbar"></u-tabbar>
+  <u-tabbar :list="tabbar" change></u-tabbar>
   </view>
 </template>
 
@@ -72,7 +72,6 @@ export default {
 	},
     methods: {
         formatDate(val) {
-            console.log(this.$store.state.tabbar)
           return tools.date(val)
         },
         filter(val, length) {

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {mapState,mapMutations} from 'vuex'
+import {mapState,mapActions} from 'vuex'
 	export default {
 		data() {
 			return {
@@ -37,7 +37,10 @@ import {mapState,mapMutations} from 'vuex'
 		  let that = this
           that.$store.dispatch('setCookie', 'zh-CN')
           await that.$store.dispatch('getCompanyInfo')
-		  await that.$store.dispatch('getNavbars')
+		//   that.$store.dispatch('setcurrentPath')
+		},
+		onShow() {
+			uni.hideTabBar()
 		},
 		computed: {
           ...mapState({
@@ -49,7 +52,8 @@ import {mapState,mapMutations} from 'vuex'
 			uni.redirectTo({
 					url: '/pages/zh-CN/Organization/organization',
 				})
-          }
+          },
+		//    ...mapActions({ setcurrentPath: 'setcurrentPath' }),
 		}
 	}
 </script>

@@ -43,10 +43,11 @@ export default new Vuex.Store({
             context.commit('setCulture', language)
         },
         //路由改变
-        setcurrentPath(context, { path, grandId }) {
+        setcurrentPath(context) {
             const homePath = `/${context.state.culture}/home`
             const array = context.state.navbars
-            const home = actions.findChildByUrl(array, homePath)
+            const home = context.dispatch('findChildByUrl',{array, homePath})
+            console.log(array)
             if (path.toLowerCase() === homePath.toLowerCase()) {
               home.isHome = true
               context.state.currentPath = home
@@ -135,9 +136,10 @@ export default new Vuex.Store({
               let tab = {}
               tab.text = element.displayName
               // tab.pagePath = "pages" + element.url
-              tab.pagePath = "pages/zh-CN/Home/home"
+              tab.pagePath = "/pages/zh-CN/Home/home"
               tab.iconPath = "home"
               tab.selectedIconPath = "home-fill"
+              tab.bannerImgs = element.bannerImgs
               if(element.catalogGroup !== null){
                 if(element.catalogGroup.cover !== ''){
                   tab.iconPath = element.catalogGroup.cover
@@ -151,6 +153,7 @@ export default new Vuex.Store({
               //   context.state.tabbar.selectedIconPath = element.catalogGroup.cover
               // }
             }
+            console.log(context.state.navbars)
           },
           async getCompanyInfo(context) {
             const res = await $axios.get('/api/services/app/CompanyInfo/GetOrCreate')

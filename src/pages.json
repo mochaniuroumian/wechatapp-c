@@ -45,6 +45,16 @@
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "",
 		"navigationBarBackgroundColor": "#3299bd",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"usingComponents": {  
+			"ly-tree-node": "/components/ly-tree/ly-tree-node"  
+		}
+	},
+	"tabBar": { 
+	    "list": [{
+	        "pagePath": "pages/index/index"
+	    }, {
+	        "pagePath": "pages/zh-CN/Home/home"
+	    }]
 	}
 }

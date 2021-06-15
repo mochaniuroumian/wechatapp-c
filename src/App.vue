@@ -16,6 +16,7 @@ import {mapState,mapMutations} from 'vuex'
 			await that.$store.dispatch('getAbp')
 			that.$store.dispatch('getHomePage')
 			await that.getLanguage()
+			await that.$store.dispatch('getNavbars')
 		},
 		computed: {
           ...mapState({
