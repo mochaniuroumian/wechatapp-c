@@ -10,7 +10,7 @@
               }}{{ formatDate(item.endDate) }}</view>
         </view>
     </view>
-    <u-tabbar :list="tabbar"></u-tabbar>
+    <u-tabbar :list="tabbar" bg-color="#254651" inactive-color="#fff" active-color="#339abc"></u-tabbar>
   </view>
 </template>
 

@@ -50,7 +50,7 @@ import {mapState,mapActions} from 'vuex'
 		methods: {
           nextpage() {
 			uni.redirectTo({
-					url: '/pages/zh-CN/Partner/partner',
+					url: '/pages/zh-CN/Honor/honor',
 				})
           },
 		//    ...mapActions({ setcurrentPath: 'setcurrentPath' }),

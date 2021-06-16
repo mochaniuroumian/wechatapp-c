@@ -59,6 +59,16 @@
 			"style": {
 				"navigationBarTitleText": "合作伙伴"
 			}
+		},
+		{
+			"path": "pages/zh-CN/ContactUs/contactus",
+			"name":"partner",
+            "meta":{
+                "title": "联系方式"
+            },
+			"style": {
+				"navigationBarTitleText": "联系方式"
+			}
 		}
 	],
 	"globalStyle": {

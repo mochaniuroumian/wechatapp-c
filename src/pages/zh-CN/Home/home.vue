@@ -36,7 +36,9 @@
       </view>
       
   </view>
-  <u-tabbar :list="tabbar" change></u-tabbar>
+  <scroll-view class="scrollbox" scroll-x="true">
+     <u-tabbar :list="tabbar" bg-color="#254651" inactive-color="#fff" active-color="#339abc"></u-tabbar>
+  </scroll-view>
   </view>
 </template>
 
